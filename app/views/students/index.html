@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>student index</title>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+		<h1 align = "center"> students table </h1>
+	    <table align = "center" border = "1">
+		        <tr>
+		            <td>sno</td>
+		            <td>sname</td>
+		            <td>sage</td>
+		            <td>ssex</td>
+		            <td>sdept</td>
+		        </tr>
+		        <tbody>
+            <% @student.each do |student| %>
+                <tr>
+                  <td><%= student.sno %></td>
+                  <td><%= student.sname %></td>
+                  <td><%= student.sage %></td>
+                  <td><%= student.ssex %></td>
+                  <td><%= student.sdept %></td>
+                  <td><%= link_to "编辑", edit_student_path(student) %></td>
+                  <td><%= link_to "删除", student_path(student), :method => "delete", :data => {confirm: '确定要删除该生吗?'} %></td>
+                </tr>
+            <% end %>
+            </tbody>
+		    </table>
+	</body>
+</html>
