@@ -1,24 +1,16 @@
+Ruby on Rails Web开发框架流程：
+Rails框架本身是一个MVC框架模式，通过合理的整合与切分，使MVC框架在Ruby开发上面更加人性化，更好地实现了各模块的分离，降低了程序的耦合性。
+ROR程序组织大体如下：
+首先，数据库层面：数据表的建立以及数据的存储都在db文件夹中进行组织和实现，通过rake功能可以实现数据库/表的创建(schema.rb)以及数据的导入(seeds.rb)
+rails默认数据库为sqlite3，可以在config/database.yml中进行其他数据库的配置。
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+然后，模型层面：将数据库信息通过名字映射的方式将数据表信息映射为Ruby可处理的对象数据，主要在models文件夹进行组织
 
+之后，逻辑层面：即控制器，实现业务逻辑处理。模型建立后，rails框架将自动根据models生成对应的方法（每个模型对应CURD的各个函数），在controllers文件夹下
+将业务逻辑实现即可。
 
-Welcome to your Rails project on Cloud9 IDE!
+其次， 视图层面：对应views文件夹，通过html、css、js实现即可。
 
-To get started, just do the following:
-
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://HOSTNAME/).
-
-Happy coding!
-The Cloud9 IDE team
+最后，关于路由映射：通过config/routes.rb进行管理，使框架正确找到对应的页面。（不是编程重点）
 
 
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
