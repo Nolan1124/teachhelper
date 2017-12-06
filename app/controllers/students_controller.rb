@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
     def index
-        @student = Student.all
+        
     end
     
     def create
@@ -40,7 +40,7 @@ class StudentsController < ApplicationController
     def destroy
         @student=Student.find_by_id(params[:id])
         @student.destroy
-        flash={:success => "成功删除学生: #{@student.name}"}
+        flash={:success => "成功删除学生: #{@student.sname}"}
         redirect_to students_path, flash: flash
     end
 end
