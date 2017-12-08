@@ -5,15 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-students = [{:sno => '201701', :sname => '张三', :sage => 23, :ssex => '男', :sdept => '计算机与控制学院'},
-    	  {:sno => '201702', :sname => '李四', :sage => 34, :ssex => '女', :sdept => '数学学院'},
-    	  {:sno => '201703', :sname => '刘爽', :sage => 23, :ssex => '女', :sdept => '网络安全学院'},
-      	  {:sno => '201704', :sname => '张翰', :sage => 25, :ssex => '男', :sdept => '地球学院'},
-      	  {:sno => '201705', :sname => '杨洋', :sage => 22, :ssex => '男', :sdept => '计算机与控制学院'},
-      	  {:sno => '201706', :sname => '胡歌', :sage => 12, :ssex => '男', :sdept => '计算机与控制学院'},
+  
+teachers = [{:id => 10010, :username => '张三', :password => '12345', :eamil => '1096221714@qq.com', :gmt_time => ''},
+    	  {:id => 10011, :username => '胡歌', :password => '12345', :eamil => '22435221715@qq.com', :gmt_time => ''},
   	 ]
-
-students.each do |student|
-  Student.create!(student)
+teachers.each do |teacher|
+  Teacher.create!(teacher)
 end
