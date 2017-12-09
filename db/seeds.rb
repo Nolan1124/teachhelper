@@ -13,8 +13,8 @@ teachers.each do |teacher|
   Teacher.create!(teacher)
 end
 
-courses = [{:c_id => 10010, :t_id => 10010, :year => 2017, :season => 0, :gmt_time => ''},
-    	  {:c_id => 10011, :t_id => 10011, :year => 2017, :season => 1, :gmt_time => ''},
+courses = [{:c_id => 10010, :t_id => 10010, :cname => '数据挖掘', :year => 2017, :season => 0, :gmt_time => ''},
+    	  {:c_id => 10011, :t_id => 10011, :cname => '算法设计', :year => 2017, :season => 1, :gmt_time => ''},
   	 ]
 courses.each do |course|
   Course.create!(course)

@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   #教师注册接口
   post 'teachers/register' => 'teachers#create'
   
+  #教师登录接口
   post 'teachers/login' => 'teachers#login'
+  
+  #添加课程接口
+  post 'courses/addcourse' => 'courses#addCourse'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
