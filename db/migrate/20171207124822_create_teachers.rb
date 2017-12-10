@@ -4,7 +4,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.integer :t_id
       t.string :username
       t.string :password
-      t.string :eamil
+      t.string :email
       t.datetime :gmt_time
       t.timestamps null: false
     end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course_id: 1
+  name: MyString
+  url: MyString
+  secret_key: MyString
+  is_shared: false
+  gmt_time: 2017-12-10 22:48:39
+
+two:
+  course_id: 1
+  name: MyString
+  url: MyString
+  secret_key: MyString
+  is_shared: false
+  gmt_time: 2017-12-10 22:48:39

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  assignment_id: 1
+  content: MyString
+  student_id: MyString
+  student_name: MyString
+  score: 1
+  gmt_time: 2017-12-10 23:13:41
+
+two:
+  assignment_id: 1
+  content: MyString
+  student_id: MyString
+  student_name: MyString
+  score: 1
+  gmt_time: 2017-12-10 23:13:41
