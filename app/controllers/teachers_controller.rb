@@ -7,29 +7,27 @@ class TeachersController < ApplicationController
   
   def new
     @teacher=Teacher.new
-    #respond_with @teacher
   end
 
   #教师注册功能
   def create
     Rails.logger.info('----------teacher create start.-------------')
-    #json_receive = params[:teacher]
-    #teacher_params = ActiveSupport::JSON.decode(json_receive)
-    resp_msg = ""
-    code = 0b0000
-    resp_json = ""
+
     @teacher = Teacher.new(teacher_params)
+    
     if @teacher.save
       code = 0b0001
       resp_msg = "教师信息注册成功"
-      resp_json = "{\"code\":#{code}, \"message\":\"#{resp_msg}\", \"data\":{} }"
-      #redirect_to teachers_path, flash: {success: "教师注册成功"}
     else
       code = 0b0000
       resp_msg = "注册失败,请重试"
-      resp_json = "{\"code\":#{code}, \"message\":\"#{resp_msg}\", \"data\":{} }"
     end
-    render :text => "#{resp_json}"
+    
+    resp_json = "{\"code\":#{code}, \"message\":\"#{resp_msg}\", \"data\":{} }"
+    
+    respond_to do |format|
+      format.json { render json: "#{resp_json}"}
+    end
   end
   
   #教师登录功能
@@ -50,7 +48,10 @@ class TeachersController < ApplicationController
     end
     
     resp_json = "{\"code\":#{code}, \"message\":\"#{resp_msg}\", \"data\":{} }"
-    render :text => "#{resp_json}"
+    
+    respond_to do |format|
+      format.json { render json: "#{resp_json}"}
+    end
   end
 
   def edit

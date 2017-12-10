@@ -13,7 +13,10 @@ class CoursesController < ApplicationController
             resp_msg = "添加课程失败"
         end
         resp_json = "{\"code\":#{code}, \"message\":\"#{resp_msg}\", \"data\":{} }"
-        render :text => "#{resp_json}"
+        
+        respond_to do |format|
+            format.json { render json: "#{resp_json}"}
+        end
     end
     
     def course_params
