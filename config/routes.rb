@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   
   #添加课程接口
   post 'courses/addcourse' => 'courses#addCourse'
+  
+  #添加课堂任务接口
+  post 'assignments/addassignment' => 'assignments#addAssignment'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

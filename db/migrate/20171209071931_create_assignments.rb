@@ -11,5 +11,4 @@ class CreateAssignments < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
-   #add_index :assignments, :a_id, unique: true
 end
