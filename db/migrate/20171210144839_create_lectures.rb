@@ -1,6 +1,7 @@
 class CreateLectures < ActiveRecord::Migration
   def change
     create_table :lectures do |t|
+      t.integer :l_id
       t.integer :course_id
       t.string :name
       t.string :url
@@ -10,5 +11,8 @@ class CreateLectures < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :lectures, :l_id, unique: true
+
   end
 end

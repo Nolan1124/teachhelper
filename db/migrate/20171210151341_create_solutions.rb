@@ -1,6 +1,7 @@
 class CreateSolutions < ActiveRecord::Migration
   def change
     create_table :solutions do |t|
+      t.integer :s_id
       t.integer :assignment_id
       t.string :content
       t.string :student_id
@@ -10,5 +11,8 @@ class CreateSolutions < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :solutions, :s_id, unique: true    
+
   end
 end
