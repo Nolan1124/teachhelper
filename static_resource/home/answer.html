@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+  <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+  <title>Forms Validation | Materialize - Material Design Admin Template</title>
+
+  <!-- Favicons-->
+  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+  <!-- Favicons-->
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+  <!-- For iPhone -->
+  <meta name="msapplication-TileColor" content="#00bcd4">
+  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+  <!-- For Windows Phone -->
+
+
+  <!-- CORE CSS-->
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+  <link href="js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <style type="text/css">
+  .input-field div.error{
+    position: relative;
+    top: -1rem;
+    left: 0rem;
+    font-size: 0.8rem;
+    color:lightblue;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+  .input-field label.active{
+      width:100%;
+  }
+  .left-alert input[type=text] + label:after, 
+  .left-alert input[type=password] + label:after, 
+  .left-alert input[type=email] + label:after, 
+  .left-alert input[type=url] + label:after, 
+  .left-alert input[type=time] + label:after,
+  .left-alert input[type=date] + label:after, 
+  .left-alert input[type=datetime-local] + label:after, 
+  .left-alert input[type=tel] + label:after, 
+  .left-alert input[type=number] + label:after, 
+  .left-alert input[type=search] + label:after, 
+  .left-alert textarea.materialize-textarea + label:after{
+      left:0px;
+  }
+  .right-alert input[type=text] + label:after, 
+  .right-alert input[type=password] + label:after, 
+  .right-alert input[type=email] + label:after, 
+  .right-alert input[type=url] + label:after, 
+  .right-alert input[type=time] + label:after,
+  .right-alert input[type=date] + label:after, 
+  .right-alert input[type=datetime-local] + label:after, 
+  .right-alert input[type=tel] + label:after, 
+  .right-alert input[type=number] + label:after, 
+  .right-alert input[type=search] + label:after, 
+  .right-alert textarea.materialize-textarea + label:after{
+      right:70px;
+  }
+  </style>
+</head>
+
+<body>
+     
+          <div id="jqueryvalidation" class="section">
+            <div class="container">
+                        <div class="card-panel">
+                            <h4 class="header2">作答页面</h4>
+                            <div class="row">
+                                <form class="formValidate" id="formValidate" method="get" action="">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label for="uname">学号*</label>
+                                            <input id="uname" name="student_id" type="text" data-error=".errorTxt1">
+                                            <div class="errorTxt1"></div>
+                                        </div>
+                                        <div class="input-field col s12">
+                                          <label for="cemail">姓名 *</label>
+                                          <input id="cemail" type="text" name="student_name" data-error=".errorTxt2">
+                                          <div class="errorTxt2"></div>
+                                        </div>
+                                           
+                                        <div class="col s12">
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis saepe vel quae impedit in sequi assumenda aliquam dolores est? Dolore earum labore rem, officiis eos amet error provident dolores tempore.</p>
+                                            <input name="group1" type="radio" id="test1" value="A" />
+                                            <label for="test1" style="margin-right:20px;">A</label>
+                                            <input name="group1" type="radio" id="test2" value="B" />
+                                            <label for="test2" style="margin-right:20px;">B</label>
+                                            <input class="with-gap" name="group1" type="radio" id="test3" value="C" />
+                                            <label for="test3" style="margin-right:20px;">C</label>
+                                            <input name="group1" type="radio" id="test4" value="D" />
+                                            <label for="test4">D</label>
+                                        </div>
+                            			
+                                        <div class="input-field col s12">
+                                            <button class="btn waves-effect waves-light right submit light-blue" type="submit" name="action">Submit
+                                              <i class="mdi-content-send right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>   
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+    <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
+    
+    <script type="text/javascript">
+     $("#formValidate").validate({
+        rules: {
+            student_id: {
+                required: true,
+                length: 15
+            },
+            student_name: {
+                required: true,
+                minlength: 2
+            },
+            
+            content: {
+                required: true,
+                minlength: 5
+            },
+        },
+        messages: {
+            student_name:{
+                required: "请输入姓名",
+                minlength: "姓名至少包含两个字符"
+            },
+            student_id:{
+                required: "请输入学号",
+                length: "请输入正确格式的学号"
+            },
+            content: {
+                required: "请输入作答内容",
+                minlength: "作答内容至少包含两个字"
+            }
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error)
+          } else {
+            error.insertAfter(element);
+          }
+        }
+     });
+
+    </script>
+    
+</body>
+
+</html>
