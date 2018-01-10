@@ -1,7 +1,26 @@
+<!DOCTYPE html>
 <html>
-    <head>
-    </head>
-    <body>
-        <p>teacher login</p>
-    </body>
-    </html>
+	<head>
+		<title>Main</title>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+		<h1 align = "center"> 教师入口 </h1>
+		<div align="center">
+    	<%= form_for :teacher, :method => 'post', :url => {:action => 'login'} do |f| %>
+     <p>
+    用户名：<%= f.text_field :t_id %>
+    </p>
+     <p>
+    密  码：<%= f.text_field :password %>
+    </p>
+  	<p><%= submit_tag "确认" %></p>
+  	
+			<% end %>
+		</div>
+		<div align="center">
+    <p>没有账号？请点击<%= link_to "注册", { :controller => 'teachers',:action => 'create' } %></p>
+        </div>
+		
+	</body>
+</html>

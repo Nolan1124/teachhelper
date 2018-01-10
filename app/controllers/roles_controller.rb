@@ -12,7 +12,8 @@ class RolesController < ApplicationController
         elsif role == '教师' then
             redirect_to :controller => 'teachers', :action => 'index'
         else
-            redirect_to :controller => 'roles', :action => 'new'
+            flash[:error] = "请选择正确角色"
+            redirect_to :controller => 'roles', :action => 'new', :flash => flash
         end
     end
     

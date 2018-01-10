@@ -26,6 +26,7 @@ class TeachersController < ApplicationController
     resp_json = "{\"code\":#{code}, \"message\":\"#{resp_msg}\", \"data\":{} }"
     
     respond_to do |format|
+      format.html # index.html.erb
       format.json { render json: "#{resp_json}"}
     end
   end
@@ -33,6 +34,7 @@ class TeachersController < ApplicationController
   #教师登录功能
   def login
     Rails.logger.info("teacher login start ")
+    
     @teacher=Teacher.find_by(t_id: params[:teacher][:t_id])
     if @teacher
       if @teacher[:password] == params[:teacher][:password]
