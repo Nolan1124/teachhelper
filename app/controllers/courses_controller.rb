@@ -1,6 +1,10 @@
 class CoursesController < ApplicationController
     #跳过csrf验证，方便测试
-    skip_before_action :verify_authenticity_token, :only => [:addCourse]
+    #skip_before_action :verify_authenticity_token, :only => [:addCourse]
+    
+    def new
+    end
+    
     def addCourse
         Rails.logger.info('----------addCourse  start.-------------')
     
@@ -15,6 +19,9 @@ class CoursesController < ApplicationController
         resp_json = "{\"code\":#{code}, \"message\":\"#{resp_msg}\", \"data\":{} }"
         
         respond_to do |format|
+            format.html do 
+                redirect_to teachers_main_path
+            end
             format.json { render json: "#{resp_json}"}
         end
     end

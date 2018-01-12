@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Main</title>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+		<h1 align = "center"> 教师注册 </h1>
+		<div align="center">
+    	<%= form_for :teacher, :method => 'post', :url => {:action => 'create'} do |f| %>
+     <p>
+    教师号：<%= f.text_field :t_id %>
+    </p>
+    <p>
+    教师名：<%= f.text_field :username %>
+    </p>
+     <p>
+    电子邮件：<%= f.text_field :eamil %>
+    </p>
+     <p>
+    密  码：<%= f.text_field :password %>
+    </p>
+    <p>
+    确认密码：<%= f.text_field :repassword %>
+    </p>
+  	<p><%= submit_tag "注册" %></p>
+	     <% end %>
+		</div>
+		
+	</body>
+</html>

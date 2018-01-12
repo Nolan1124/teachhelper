@@ -6,21 +6,33 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'roles#new'
  # post 'roles#create'
+ 
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   
-  #教师注册接口
+  #教师注册
   post 'teachers/register' => 'teachers#create'
+  get 'teachers/register' => 'teachers#register'
   
-  #教师登录接口
+  #教师登录
   post 'teachers/login' => 'teachers#login'
   
-  #添加课程接口
+  #教师主页
+  get 'teachers/main' => 'teachers#teacherMain'
+  
+  #教师退出
+  get 'teachers/logout' => 'teachers#destroy'
+  
+  #添加课程
   post 'courses/addcourse' => 'courses#addCourse'
   
-  #添加课堂任务接口
+  #添加课堂任务
   post 'assignments/addassignment' => 'assignments#addAssignment'
+  
+  #显示任务列表
+  post 'assignments/show' => 'assignments#show'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -71,4 +83,6 @@ Rails.application.routes.draw do
   resources :courses
   resources :teachers
   resources :assignments
+  
+  
 end

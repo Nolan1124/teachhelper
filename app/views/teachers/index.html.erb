@@ -9,17 +9,20 @@
 		<div align="center">
     	<%= form_for :teacher, :method => 'post', :url => {:action => 'login'} do |f| %>
      <p>
-    用户名：<%= f.text_field :t_id %>
+    教师号：<%= f.text_field :t_id %>
     </p>
      <p>
     密  码：<%= f.text_field :password %>
     </p>
-  	<p><%= submit_tag "确认" %></p>
+  	<p><%= submit_tag "登录" %></p>
   	
 			<% end %>
 		</div>
 		<div align="center">
-    <p>没有账号？请点击<%= link_to "注册", { :controller => 'teachers',:action => 'create' } %></p>
+    <p>没有账号？请点击<%= link_to "注册", { :controller => 'teachers',:action => 'register' } %></p>
+    <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: name %>
+    <% end -%>
         </div>
 		
 	</body>

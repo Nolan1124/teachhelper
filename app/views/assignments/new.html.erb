@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Main</title>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+		<h1 align = "center"> 添加课堂任务 </h1>
+		<div align="center">
+    	<%= form_for :assignment, :method => 'post', :url => {:action => 'addAssignment'} do |f| %>
+     <p>
+    任务编号：<%= f.text_field :a_id %>
+    </p>
+    <p>
+    课程号：<%= f.text_field :course_id %>
+    </p>
+     <p>
+    题目描述：<%= f.text_field :description %>
+    </p>
+  	<p><%= submit_tag "添加" %></p>
+	     <% end %>
+		</div>
+		
+	</body>
+</html>
