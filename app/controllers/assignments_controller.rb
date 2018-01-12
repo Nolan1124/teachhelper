@@ -3,7 +3,7 @@ require "securerandom"
 
 class AssignmentsController < ApplicationController
     #skip_before_action :verify_authenticity_token, :only => [:addAssignment]
-    #before_action :verify_authenticity_token, :only => [:addAssignment]
+    before_action :verify_authenticity_token, :only => [:addAssignment, :showlist, :setDuration, :duration]
     
     def new
     end
@@ -42,15 +42,52 @@ class AssignmentsController < ApplicationController
         
         respond_to do |format|
             format.html do 
-                redirect_to assignments_show_path, :data => resp_json.to_json
+                redirect_to assignments_showlist_path 
             end
             format.json { render json: "#{resp_json}"}
         end
     end
     
     #显示任务列表
+    def showlist
+       @assignment = Assignment.find_by_sql("select b.c_id, b.cname, a.a_id, a.description, a.a_secret_key, a.duration from assignments a,courses b where a.course_id = b.c_id and b.t_id = '#{session[:teacher_id]}'")
+        
+        respond_to do |format|
+            if @assignment
+                flash = {:info => "添加成功"}
+                format.html
+                format.json { render json: @assignment }
+            else
+                flash = {:error => "添加失败"}
+                format.html do
+                    redirect_to  new_assignment_path, :flash => flash
+                end
+            end
+        end 
+    end
+    
     def show
-        #@assignment = Assignment.find_by_sql()
+        
+    end
+    
+    #设置密钥有效期
+    def setDuration
+        @assignment = Assignment.find_by(a_id: session[:a_id])
+        
+        if @assignment.update_attributes(:duration => params[:assignment][:screte_duration], :gmt_time => Time.current)
+            #gmt_time为密钥开始时间，用于计算密钥有效期
+            flash = {:info => "密钥开始有效，请及时向学生公布."}
+        else
+            flash = {:error => "密钥有效期设置错误."}
+        end
+        session[:a_id] = nil
+        
+        redirect_to assignments_duration_path, :flash => flash 
+    end
+    
+    def duration
+        session[:a_id] = params[:number] 
+        print "seseeeeeeeeeeeeeeeeeeeeeee::::::::::::::", session[:a_id]
     end
     
 private

@@ -32,7 +32,11 @@ Rails.application.routes.draw do
   post 'assignments/addassignment' => 'assignments#addAssignment'
   
   #显示任务列表
-  post 'assignments/show' => 'assignments#show'
+  get 'assignments/showlist' => 'assignments#showlist'
+  
+  #设置密钥有效期
+  post 'assignments/setDuration' => 'assignments#setDuration'
+  get 'assignments/duration' => 'assignments#duration'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

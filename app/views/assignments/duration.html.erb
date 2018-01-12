@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Main</title>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+		<h1 align = "center"> 添加课堂任务密钥有效期 </h1>
+		<div align="center">
+		    <p>任务编号：<%= session[:a_id] %></p>
+    	    <%= form_for :assignment, :method => 'post', :url => {:action => 'setDuration'} do |f| %>
+                <p>密钥有效期：<%= f.text_field :screte_duration %></p>
+  	            <p><%= submit_tag "生成" %></p>
+	         <% end %>
+	         
+	         <% flash.each do |name, msg| -%>
+                <%= content_tag :div, msg, class: name %>
+             <% end -%>
+		</div>
+		
+	</body>
+</html>

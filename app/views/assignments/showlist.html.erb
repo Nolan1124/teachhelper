@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Main</title>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+		<h1 align = "center"> 任务列表 </h1>
+		<div align="center">
+		  <table>
+            <tr>
+                <th>课程号</th>
+                <th>课程名</th>
+                <th>任务编号</th>
+                <th>任务描述</th>
+                <th>密钥</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+ 
+            <% @assignment.each do |assignment| %>
+            <tr>
+                <td><%= assignment.c_id %></td>
+                <td><%= assignment.cname %></td>
+                <td><%= assignment.a_id %></td>
+                <td><%= assignment.description %></td>
+                <td><%= assignment.a_secret_key %></td>
+                <td><%= assignment.duration %></td>
+                <td><%= link_to "设置有效期", assignments_duration_path(:number => assignment.a_id) %></td>
+            </tr>
+            <% end %>
+            </table>
+		    
+		</div>
+		
+	</body>
+</html>
