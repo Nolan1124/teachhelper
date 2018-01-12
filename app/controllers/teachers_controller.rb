@@ -108,7 +108,7 @@ class TeachersController < ApplicationController
   private
 
   def teacher_params
-    params.require(:teacher).permit(:t_id, :username, :password, :eamil, :gmt_time)
+    params.require(:teacher).permit(:t_id, :username, :password, :email, :gmt_time)
   end
   
 end

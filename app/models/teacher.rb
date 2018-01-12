@@ -5,6 +5,6 @@ class Teacher < ActiveRecord::Base
     validates :password, presence: true, length: {minimum: 6}
     #email 确定正确格式
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-    validates :eamil, presence: true, length: {maximum: 255},
+    validates :email, presence: true, length: {maximum: 255},
             format: {with: VALID_EMAIL_REGEX}
 end
