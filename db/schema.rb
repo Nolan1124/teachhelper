@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210143832) do
+ActiveRecord::Schema.define(version: 20180112132028) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "a_id"
@@ -45,8 +45,9 @@ ActiveRecord::Schema.define(version: 20171210143832) do
     t.string   "password"
     t.string   "email"
     t.datetime "gmt_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
   end
 
   add_index "teachers", ["t_id"], name: "index_teachers_on_t_id", unique: true

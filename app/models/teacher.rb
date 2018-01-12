@@ -1,4 +1,5 @@
 class Teacher < ActiveRecord::Base
+    before_save { self.email = email.downcase }
     #t_id 唯一
     validates :t_id, presence: true, uniqueness: true
     #password长度不小于6个字符
@@ -6,5 +7,6 @@ class Teacher < ActiveRecord::Base
     #email 确定正确格式
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, length: {maximum: 255},
-            format: {with: VALID_EMAIL_REGEX}
+            format: {with: VALID_EMAIL_REGEX}, uniqueness: { case_sensitive: false }
+    has_secure_password
 end
