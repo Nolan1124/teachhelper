@@ -5,10 +5,10 @@ class CreateTeachers < ActiveRecord::Migration
       t.string :password
       t.string :email
       t.datetime :gmt_time
+    
       t.timestamps null: false
     end
-    
     add_index :teachers, :email, unique: true
-    
+
   end
 end

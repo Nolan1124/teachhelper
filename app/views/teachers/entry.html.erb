@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>教师入口|TA 教学助手</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/home/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/home/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="icon" type="image/png" href="/home/image/ta.ico">
+</head>
+<body>
+  <div class="row" style="margin-top:200px;">
+      <div class="col s12 m4 offset-m4">
+      <div class="card blue">
+          <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width tabs-transparent">
+              <li class="tab"><a href="#test1">登录</a></li>
+              <li class="tab"><a href="#test2">注册</a></li>
+            <li class="indicator" style="right: 131px; left: 130px;"></li></ul>
+          </div>
+          <div class="card-content blue lighten-5">
+            <div id="test1" class="">
+                <form method = "post" action = "/teachers/login" id = "teacher">
+                    <div class="row">
+                      <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="icon_prefix light-blue" type="text" name = "t_id" class="validate">
+                        <label for="icon_prefix">用户名</label>
+                      </div>
+                      <div class="input-field">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="icon_telephone" type="password" name="password" class="validate">
+                        <label for="icon_telephone">密码</label>
+                      </div>
+                      <button class="btn waves-effect light-blue" type="submit" name="action">登录
+                        <i class="material-icons right">send</i>
+                      </button>
+                    </div>
+                  </form>
+            </div>
+            <div id="test2" class="active" style="">
+                <form>
+                    <div class="row">
+                      <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="icon_prefix light-blue" type="text" class="validate">
+                        <label for="icon_prefix">用户名</label>
+                      </div>
+                      <div class="input-field">
+                          <i class="material-icons prefix">email</i>
+                          <input id="icon_email" type="email" class="validate">
+                          <label for="icon_email">邮件地址</label>
+                        </div>
+                      <div class="input-field">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="icon_telephone" type="password" class="validate">
+                        <label for="icon_telephone">密码</label>
+                      </div>
+
+                      <button class="btn waves-effect light-blue" type="submit" name="action">注册
+                        <i class="material-icons right">send</i>
+                      </button>
+                    </div>
+                  </form>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+  </div>
+   
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/home/js/materialize.min.js"></script>
+</body>
+
+</html>

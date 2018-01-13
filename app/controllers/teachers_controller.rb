@@ -10,6 +10,11 @@ class TeachersController < ApplicationController
     @teacher=Teacher.new
   end
   
+  #教师入口
+  def entry
+    
+  end
+  
   def show
   end
 
@@ -48,7 +53,7 @@ class TeachersController < ApplicationController
   def login
     Rails.logger.info("teacher login start ")
     
-    @teacher=Teacher.find_by(t_id: params[:teacher][:t_id])
+    @teacher=Teacher.find_by(t_id: params[:t_id])
     if @teacher
       if @teacher[:password] == params[:teacher][:password]
         session[:teacher_id] = @teacher.t_id

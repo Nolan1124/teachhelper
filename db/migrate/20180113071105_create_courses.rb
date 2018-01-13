@@ -3,10 +3,9 @@ class CreateCourses < ActiveRecord::Migration
     create_table :courses do |t|
       t.integer :teacher_id
       t.string :name
-	  t.datetime :gmt_time
-
+	    t.datetime :gmt_time
+	    
       t.timestamps null: false
     end
-  
- end
+  end
 end

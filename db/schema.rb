@@ -11,45 +11,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112132028) do
+ActiveRecord::Schema.define(version: 20180113071627) do
 
   create_table "assignments", force: :cascade do |t|
-    t.integer  "a_id"
     t.integer  "course_id"
-    t.string   "description"
-    t.string   "a_secret_key"
+    t.text     "content"
+    t.string   "answer"
+    t.string   "secret_key"
     t.integer  "duration"
     t.datetime "gmt_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.integer  "teacher_id"
+    t.string   "name"
+    t.datetime "gmt_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lectures", force: :cascade do |t|
+    t.integer  "course_id"
+    t.string   "lecture_name"
+    t.string   "url"
+    t.string   "secret_key"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
-  add_index "assignments", ["a_id"], name: "index_assignments_on_a_id", unique: true
-
-  create_table "courses", force: :cascade do |t|
-    t.integer  "c_id"
-    t.integer  "t_id"
-    t.integer  "year"
-    t.integer  "season"
+  create_table "solutions", force: :cascade do |t|
+    t.integer  "assignment_id"
+    t.string   "student_answer"
+    t.string   "student_id"
+    t.string   "student_name"
+    t.integer  "score"
     t.datetime "gmt_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "cname"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
-  add_index "courses", ["c_id"], name: "index_courses_on_c_id", unique: true
-
   create_table "teachers", force: :cascade do |t|
-    t.integer  "t_id"
     t.string   "username"
     t.string   "password"
     t.string   "email"
     t.datetime "gmt_time"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "teachers", ["t_id"], name: "index_teachers_on_t_id", unique: true
+  add_index "teachers", ["email"], name: "index_teachers_on_email", unique: true
 
 end

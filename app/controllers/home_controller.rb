@@ -1,7 +1,6 @@
-class RolesController < ApplicationController
+class HomeController < ApplicationController
     #处理角色界面
-    def new
-    
+    def index
     end
     
     #处理角色处理流程

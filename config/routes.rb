@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'roles#new'
+  root 'home#index'
  # post 'roles#create'
  
   
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post 'teachers/login' => 'teachers#login'
   
   #教师主页
-  get 'teachers/main' => 'teachers#teacherMain'
+  get 'teachers/entry' => 'teachers#entry'
   
   #教师退出
   get 'teachers/logout' => 'teachers#destroy'
@@ -83,7 +83,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :roles
   resources :courses
   resources :teachers
   resources :assignments
