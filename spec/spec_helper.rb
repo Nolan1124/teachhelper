@@ -22,9 +22,9 @@ RSpec.configure do |config|
   # assertions if you prefer.
   #config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL 
-  config.before(:all) do
-    FactoryGirl.reload
-  end
+  #config.before(:all) do
+  #  FactoryGirl.reload
+  #end
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
