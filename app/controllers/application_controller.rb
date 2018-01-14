@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
+  before_action :verify_authenticity_token
+  
   #异常处理
   def rescue_action_in_public(exception)
     Rails.logger.error("rescue_action_in_public exe")
@@ -37,15 +39,22 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  #before_action :require_login
+  before_action :require_login
  
-  #private
- 
-  #def require_login
-   # unless logged_in?
-    #  flash[:error] = "你必须先登录"
-     # redirect_to new_role_path 
-    #end
-  #end
+  private
+  def require_login
+    unless logged_in?
+      flash[:error] = "你必须先登录"
+      redirect_to teachers_entry_path
+    end
+  end
+  
+  def logged_in?
+    if session[:teacher_id] == nil
+      return false
+    else
+      return true
+    end
+  end
   
 end

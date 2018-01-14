@@ -30,6 +30,11 @@ gem 'uuidtools'
 
 gem 'responders'
 
+#spec测试
+gem "capybara"
+gem 'database_cleaner'
+gem 'factory_girl_rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -39,9 +44,11 @@ gem 'responders'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#安装rspec测试环境
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails'
 end
 
 group :development do

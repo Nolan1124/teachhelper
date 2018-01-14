@@ -12,6 +12,10 @@
   <link rel="icon" type="image/png" href="/home/image/ta.ico">
 </head>
 <body>
+  <!--错误消息提示 flash-->
+  <% flash.each do |name, msg| -%>
+     <%= content_tag :div, msg, class: name %>
+  <% end -%>
   <div class="row" style="margin-top:200px;">
       <div class="col s12 m4 offset-m4">
       <div class="card blue">
@@ -23,16 +27,16 @@
           </div>
           <div class="card-content blue lighten-5">
             <div id="test1" class="">
-                <form method = "post" action = "/teachers/login" id = "teacher">
+                <form method = "post" action = "/teachers/login" id = "form_login">
                     <div class="row">
                       <div class="input-field">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="icon_prefix light-blue" type="text" name = "t_id" class="validate">
-                        <label for="icon_prefix">用户名</label>
+                        <input id="icon_prefix light-blue" type="text" name = "email_1" class="validate">
+                        <label for="icon_prefix">邮箱</label>
                       </div>
                       <div class="input-field">
                         <i class="material-icons prefix">lock</i>
-                        <input id="icon_telephone" type="password" name="password" class="validate">
+                        <input id="icon_telephone" type="password" name="password_1" class="validate">
                         <label for="icon_telephone">密码</label>
                       </div>
                       <button class="btn waves-effect light-blue" type="submit" name="action">登录
@@ -42,21 +46,21 @@
                   </form>
             </div>
             <div id="test2" class="active" style="">
-                <form>
+                <form method = "post" action = "/teachers/register" id = "teacher" name = "teacher">
                     <div class="row">
                       <div class="input-field">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="icon_prefix light-blue" type="text" class="validate">
+                        <input id="icon_prefix light-blue" type="text" name = "username" class="validate">
                         <label for="icon_prefix">用户名</label>
                       </div>
                       <div class="input-field">
                           <i class="material-icons prefix">email</i>
-                          <input id="icon_email" type="email" class="validate">
+                          <input id="icon_email" type="email" name = "email" class="validate">
                           <label for="icon_email">邮件地址</label>
                         </div>
                       <div class="input-field">
                         <i class="material-icons prefix">lock</i>
-                        <input id="icon_telephone" type="password" class="validate">
+                        <input id="icon_telephone" type="password" name = "password" class="validate">
                         <label for="icon_telephone">密码</label>
                       </div>
 
