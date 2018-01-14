@@ -1,0 +1,66 @@
+<% provide(:title, "input_key") %>
+<h1>input_key</h1>
+
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<div class="row">
+    <%= form_for(:session, url: sessions_path) do |f| %>
+        <p>
+           <%= f.label :secret_key %>
+           <%= f.text_area :secret_key %>
+        </p>
+        <p>
+          <%= f.submit "input_key" %>
+        </p>
+        
+    <% end %>
+</div>
+
+<table>
+    <thead>
+      <tr>
+        <th>content</th><!--new-->
+        <th>answer</th><!--new-->
+        <th>secret_key</th><!--new-->
+      </tr>
+    </thead>
+    <tbody>
+      <% assi=Assignment.find_by_sql("select * from assignments") %>
+      <% assi.each do |ass| %>
+        <tr>
+          <td><%= ass.content %></td><!--new-->
+          <td><%= ass.answer %></td> <!--new-->
+          <td><%= ass.secret_key %></td> <!--new-->
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+<table>
+    <thead>
+      <tr>
+        <th>id</th><!--new-->
+        <th>course_id</th><!--new-->
+        <th>lecture_name</th><!--new-->
+        <th>url</th><!--new-->
+        <th>secret_key</th><!--new-->
+      </tr>
+    </thead>
+    <tbody>
+      <% lect=Lecture.all %>
+      <% lect.each do |lec| %>
+        <tr>
+          <td><%= lec.id %></td><!--new-->
+          <td><%= lec.course_id %></td> <!--new-->
+          <td><%= lec.lecture_name %></td> <!--new-->
+          <td><%= lec.url %></td> <!--new-->
+          <td><%= lec.secret_key %></td> <!--new-->
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+<br>
+<br>
+<%= link_to 'link to root', root_path %>
+<%= link_to 'link to lecture', lectures_path %>

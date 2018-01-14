@@ -39,13 +39,5 @@ class ApplicationController < ActionController::Base
   
   #before_action :require_login
  
-  #private
- 
-  #def require_login
-   # unless logged_in?
-    #  flash[:error] = "你必须先登录"
-     # redirect_to new_role_path 
-    #end
-  #end
   
 end
