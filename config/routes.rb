@@ -4,24 +4,19 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
   root 'home#index'
- # post 'roles#create'
- 
-  
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
   
   #教师注册
   post 'teachers/register' => 'teachers#create'
-  get 'teachers/register' => 'teachers#register'
   
   #教师登录
   post 'teachers/login' => 'teachers#login'
   
-  #教师主页
+  #教师登录、注册入口页面
   get 'teachers/entry' => 'teachers#entry'
+  
+  #教师主页
+  get 'teachers/index' => 'teachers#index'
   
   #教师退出
   get 'teachers/logout' => 'teachers#destroy'
@@ -106,6 +101,5 @@ Rails.application.routes.draw do
   resources :courses
   resources :teachers
   resources :assignments
-  
   
 end
