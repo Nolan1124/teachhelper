@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 3.1
+	Author: GeeksLabs
+	Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================ -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+    <title>教师后台管理界面</title>
+
+    <!-- Favicons-->
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <!-- For Windows Phone -->
+
+
+    <!-- CORE CSS-->    
+    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->    
+    <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+</head>
+
+<body>
+    <header id="header" class="page-topbar">
+        <!-- start header nav-->
+        <div class="navbar-fixed">
+            <nav class="navbar-color">
+                <div class="nav-wrapper">
+                    <ul class="left">                      
+                      <li><h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- end header nav-->
+    </header>
+    <!-- END HEADER -->
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            <!-- START LEFT SIDEBAR NAV-->
+            <aside id="left-sidebar-nav">
+                <ul id="slide-out" class="side-nav fixed leftside-navigation">
+                <li class="user-details cyan darken-2">
+                <div class="row">
+                    <div class="col col s4 m4 l4">
+                        <img src="images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                    </div>
+                    <div class="col col s8 m8 l8">
+                        <ul id="profile-dropdown" class="dropdown-content">
+                            <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
+                            </li>
+                        </ul>
+                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">John Doe<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                        <p class="user-roal">Administrator</p>
+                    </div>
+                </div>
+                </li>
+               
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> 课程管理</a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="layout-fullscreen.html">添加课程</a>
+                                    </li>
+                                    <li><a href="layout-horizontal-menu.html">课程列表</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> 任务管理</a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="css-typography.html">添加任务</a>
+                                    </li>
+                                    <li><a href="css-icons.html">任务列表</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> 课件资料</a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="ui-alerts.html">添加课件</a>
+                                    </li>
+                                    <li><a href="ui-buttons.html">课件列表</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            
+            </ul>
+
+            </aside>
+            <section id="content">
+                <div class="container">
+                    <div id="chart-dashboard">
+                        <div class="row">
+                            <div class="row">
+                <div class="col s12 m12">
+                  <div class="card-panel">
+                    <h4 class="header2">添加课程</h4>
+                    <div class="row">
+                      <form class="col s12">
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input id="name" type="text">
+                            <label for="first_name">课程名</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input id="email" type="email">
+                            <label for="email">课程时间</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input id="password" type="password">
+                            <label for="password">开课季节</label>
+                          </div>
+                        </div>
+                      
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <button class="btn cyan waves-effect waves-light right" type="submit" name="action">添加课程
+                                <i class="mdi-content-send right"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </div>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                Copyright © 2015 <a class="grey-text text-lighten-4" href="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs" target="_blank">GeeksLabs</a> All rights reserved.
+                <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://geekslabs.com/">GeeksLabs</a></span>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!--scrollbar-->
+
+</body>
+
+</html>
