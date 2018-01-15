@@ -1,0 +1,11 @@
+<h1>New Solution</h1>
+
+<p id="session"><%= session[:secret_key] %></p>
+
+<% if flash[:warning] %>
+  <div class="warning"><%= flash[:warning] %></div>
+<% end %>
+
+<%= render 'form' %>
+
+<%= link_to "返回首页", sessions_delete_key_path  %>

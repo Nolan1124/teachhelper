@@ -58,3 +58,8 @@ group :development do
   gem 'spring'
 end
 
+######################GWL###################################################
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
+gem 'less-rails'
+######################GWL###################################################
