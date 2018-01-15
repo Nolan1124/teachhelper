@@ -7,15 +7,16 @@
 	<body>
 		<h1 align = "center"> 添加课堂任务 </h1>
 		<div align="center">
-    	<%= form_for :assignment, :method => 'post', :url => {:action => 'addAssignment'} do |f| %>
+		    <% flash.each do |name, msg| -%>
+              <%= content_tag :div, msg, class: name %>
+           <% end -%>
+		    
+    	<%= form_for :assignment, :method => 'post', :url => {:action => 'add_assignment'} do |f| %>
      <p>
-    任务编号：<%= f.text_field :a_id %>
+    题目描述(选择题)：<%= f.text_field :content %>
     </p>
     <p>
-    课程号：<%= f.text_field :course_id %>
-    </p>
-     <p>
-    题目描述：<%= f.text_field :description %>
+    题目答案(答案序列)：<%= f.text_field :answer %>
     </p>
   	<p><%= submit_tag "添加" %></p>
 	     <% end %>

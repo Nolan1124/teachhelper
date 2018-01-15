@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_action :verify_authenticity_token
+  before_action :require_login
   
   #异常处理
   def rescue_action_in_public(exception)
@@ -38,8 +39,6 @@ class ApplicationController < ActionController::Base
       format.json { render json: "#{resp_json}"}
     end
   end
-  
-  before_action :require_login
  
   private
   def require_login

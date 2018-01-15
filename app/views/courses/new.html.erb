@@ -7,21 +7,13 @@
 	<body>
 		<h1 align = "center"> 添加课程 </h1>
 		<div align="center">
-    	<%= form_for :course, :method => 'post', :url => {:action => 'addCourse'} do |f| %>
+			<% flash.each do |name, msg| -%>
+              <%= content_tag :div, msg, class: name %>
+           <% end -%>
+			
+    	<%= form_for :course, :method => 'post', :url => {:action => 'add_course'} do |f| %>
      <p>
-    课程号：<%= f.text_field :c_id %>
-    </p>
-    <p>
-    教师号：<%= f.text_field :t_id %>
-    </p>
-     <p>
-    课程名：<%= f.text_field :cname %>
-    </p>
-     <p>
-    学  年：<%= f.text_field :year %>
-    </p>
-    <p>
-    学期：<%= f.text_field :season %>
+    课程名：<%= f.text_field :name %>
     </p>
   	<p><%= submit_tag "添加" %></p>
 	     <% end %>

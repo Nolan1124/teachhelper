@@ -11,6 +11,8 @@ class TeachersController < ApplicationController
   
   #教师主页
   def index
+    #获取我的课程信息
+    @my_courses = Course.find_by_sql("select * from courses where teacher_id = #{session[:teacher_id]}")
   end
 
   #教师注册功能
@@ -36,9 +38,9 @@ class TeachersController < ApplicationController
     if @teacher
       if @teacher[:password] == params[:password_1]
         session[:teacher_id] = @teacher.id
-        #code = 0b0001
-        teacher_name = @teacher[:username]
-        flash = {:info => "登录成功,欢迎您，#{teacher_name}:)"}
+        session[:teacher_name] = @teacher.username
+        
+        flash = {:info => "登录成功,欢迎您，#{session[:teacher_name]}:)"}
         redirect_to teachers_path, :flash => flash
         return
       else
@@ -54,9 +56,11 @@ class TeachersController < ApplicationController
 
   #退出登录
   def destroy
-      session[:teacher_id] = nil
-      flash = {:success => "成功退出"}
-      redirect_to teachers_entry_path, :flash => flash
+    session[:teacher_id] = nil
+    session[:teacher_name] = nil
+      
+    flash = {:success => "成功退出"}
+    redirect_to teachers_entry_path, :flash => flash
   end
   
 private

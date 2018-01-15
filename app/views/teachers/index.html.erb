@@ -5,15 +5,42 @@
 		<meta charset="UTF-8"/>
 	</head>
 	<body>
+	    <p align = "right">欢迎您,<%= session[:teacher_name] %></p>
 		<h1 align = "center"> 教师主页 </h1>
-		 
+		
 		<div align="center">
 		   <% flash.each do |name, msg| -%>
               <%= content_tag :div, msg, class: name %>
            <% end -%>
+           <br>
+           
+           <h2>我的课程</h2>
+        <!--显示我的课程 -->
+       <% if @my_courses %>
+		  <table border = "1">
+            <tr>
+                <th>课程号</th>
+                <th>课程名</th>
+                <th>创建时间</th>
+                <th>课程详情</th>
+                <th>删除</th>
+            </tr>
+ 
+            <% @my_courses.each do |course| %>
+            <tr>
+                <td><%= course.id %></td>
+                <td><%= course.name %></td>
+                <td><%= course.created_at %></td>
+                <td><%= link_to "进入", courses_path(:page => course.id) %></td>
+                <td><%= link_to "删除", course, method: :delete, data: { confirm: "确定删除该门课程吗?" } %></td>
+            </tr>
+            <% end %>
+            </table>
+           <% else %>
+             <p>您暂时还没有添加任何课程</p>
+           <% end %>
+         
            <p><%= link_to "添加课程", { :controller => 'courses',:action => 'new' } %></p>
-           <p><%= link_to "添加课堂任务", { :controller => 'assignments',:action => 'new' } %></p>
-           <p>添加讲义</p>
            <p><%= link_to "退出登录", { :controller => 'teachers',:action => 'destroy' } %></p>
         </div>
 		
