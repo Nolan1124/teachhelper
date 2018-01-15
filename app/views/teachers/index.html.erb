@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
-    <title>鏁欏笀鍚庡彴绠＄悊鐣岄潰</title>
+    <title>教师后台|TA</title>
 
     <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
    
@@ -26,7 +26,7 @@
         <div class="navbar-fixed">
             <nav class="navbar-color">
                 <div class="nav-wrapper">
-                    <h1>鏁欏笀鍚庡彴绠＄悊绯荤粺</h1>
+                    <span style="font-size:18px;margin-left:20px">  教师后台管理界面</span> 
                 </div>
             </nav>
         </div>
@@ -47,22 +47,22 @@
                     </div>
                     <div class="col col s8 m8 l8">
                         <ul id="profile-dropdown" class="dropdown-content">
-                            <li><%= link_to "閫€鍑虹櫥褰?, { :controller => 'teachers',:action => 'destroy' } %></li>
+                            <li><%= link_to "退出登录", { :controller => 'teachers',:action => 'destroy' } %></li>
                         </ul>
                         <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">John Doe<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                        <p class="user-roal">鏁欏笀鍚嶇О</p>
+                        <p class="user-roal">教师名称</p>
                     </div>
                 </div>
                 </li>
                
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> 璇剧▼绠＄悊</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> 课程管理</a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><%= link_to "娣诲姞璇剧▼", { :controller => 'courses',:action => 'new' } %></a>
+                                    <li><%= link_to "添加课程", { :controller => 'courses',:action => 'new' } %></a>
                                     </li>
-                                    <li><a href="layout-horizontal-menu.html">璇剧▼鍒楄〃</a>
+                                    <li><a href="layout-horizontal-menu.html">课程列表</a>
                                     </li>
                                 </ul>
                             </div>
@@ -71,22 +71,22 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> 浠诲姟绠＄悊</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> 任务管理</a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><%= link_to "娣诲姞璇惧爞浠诲姟", { :controller => 'assignments',:action => 'new' } %>
+                                    <li><%= link_to "添加任务", { :controller => 'assignments',:action => 'new' } %>
                                     </li>
-                                    <li><a href="css-icons.html">浠诲姟鍒楄〃</a>
+                                    <li><a href="css-icons.html">任务列表</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> 璇句欢璧勬枡</a>
+                        <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> 课件管理</a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="ui-alerts.html">娣诲姞璇句欢</a>
+                                    <li><a href="ui-alerts.html">添加课件</a>
                                     </li>
-                                    <li><a href="ui-buttons.html">璇句欢鍒楄〃</a>
+                                    <li><a href="ui-buttons.html">课件列表</a>
                                     </li>
                                 </ul>
                             </div>
@@ -120,7 +120,7 @@
     <footer class="page-footer">
         <div class="footer-copyright">
             <div class="container">
-                Copyright 漏 2015 <a class="grey-text text-lighten-4" href="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs" target="_blank">GeeksLabs</a> All rights reserved.
+                Copyright &copy 2015 <a class="grey-text text-lighten-4" href="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs" target="_blank">GeeksLabs</a> All rights reserved.
                 <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://geekslabs.com/">GeeksLabs</a></span>
             </div>
         </div>
