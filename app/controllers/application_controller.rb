@@ -39,10 +39,6 @@ class ApplicationController < ActionController::Base
     end
   end
   
-<<<<<<< HEAD
-  #before_action :require_login
- 
-=======
   before_action :require_login
  
   private
@@ -60,6 +56,5 @@ class ApplicationController < ActionController::Base
       return true
     end
   end
->>>>>>> 912f855d53af28b9e86ab355d57d3d60e073ca31
   
 end
