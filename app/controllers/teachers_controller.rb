@@ -36,6 +36,7 @@ class TeachersController < ApplicationController
     if @teacher
       if @teacher[:password] == params[:password_1]
         session[:teacher_id] = @teacher.id
+        session[:teacher_name] = @teacher.username
         #code = 0b0001
         teacher_name = @teacher[:username]
         flash = {:info => "登录成功,欢迎您，#{teacher_name}:)"}

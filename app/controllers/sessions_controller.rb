@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
         
     end
     def create
-        key=params[:session][:secret_key]
+        key=params[:secret_key]
         if ifAkey(key) then
             ass=Assignment.find_by(secret_key: key)
             if(ass)
