@@ -1,21 +1,136 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>教师主页</title>
-		<meta charset="UTF-8"/>
-	</head>
-	<body>
-		<h1 align = "center"> 教师主页 </h1>
-		 
-		<div align="center">
-		   <% flash.each do |name, msg| -%>
-              <%= content_tag :div, msg, class: name %>
-           <% end -%>
-           <p><%= link_to "添加课程", { :controller => 'courses',:action => 'new' } %></p>
-           <p><%= link_to "添加课堂任务", { :controller => 'assignments',:action => 'new' } %></p>
-           <p>添加讲义</p>
-           <p><%= link_to "退出登录", { :controller => 'teachers',:action => 'destroy' } %></p>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>鏁欏笀鍚庡彴绠＄悊鐣岄潰</title>
+
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+   
+    <!-- CORE CSS-->    
+    <link href="/admin/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="/admin/css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->    
+    <link href="/admin/css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="/admin/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="/admin/js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+</head>
+
+<body>
+    <header id="header" class="page-topbar">
+        <!-- start header nav-->
+        <div class="navbar-fixed">
+            <nav class="navbar-color">
+                <div class="nav-wrapper">
+                    <h1>鏁欏笀鍚庡彴绠＄悊绯荤粺</h1>
+                </div>
+            </nav>
         </div>
-		
-	</body>  
+        <!-- end header nav-->
+    </header>
+    <!-- END HEADER -->
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+            <!-- START LEFT SIDEBAR NAV-->
+            <aside id="left-sidebar-nav">
+                <ul id="slide-out" class="side-nav fixed leftside-navigation">
+                <li class="user-details cyan darken-2">
+                <div class="row">
+                    <div class="col col s4 m4 l4">
+                        <img src="images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                    </div>
+                    <div class="col col s8 m8 l8">
+                        <ul id="profile-dropdown" class="dropdown-content">
+                            <li><%= link_to "閫€鍑虹櫥褰?, { :controller => 'teachers',:action => 'destroy' } %></li>
+                        </ul>
+                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">John Doe<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                        <p class="user-roal">鏁欏笀鍚嶇О</p>
+                    </div>
+                </div>
+                </li>
+               
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> 璇剧▼绠＄悊</a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><%= link_to "娣诲姞璇剧▼", { :controller => 'courses',:action => 'new' } %></a>
+                                    </li>
+                                    <li><a href="layout-horizontal-menu.html">璇剧▼鍒楄〃</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> 浠诲姟绠＄悊</a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><%= link_to "娣诲姞璇惧爞浠诲姟", { :controller => 'assignments',:action => 'new' } %>
+                                    </li>
+                                    <li><a href="css-icons.html">浠诲姟鍒楄〃</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> 璇句欢璧勬枡</a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="ui-alerts.html">娣诲姞璇句欢</a>
+                                    </li>
+                                    <li><a href="ui-buttons.html">璇句欢鍒楄〃</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            
+            </ul>
+
+            </aside>
+            <section id="content">
+                <div class="container">
+                    <div id="chart-dashboard">
+                        <div class="row">
+
+
+<h1>宸﹁竟鏍忓唴瀹瑰唴瀹瑰唴瀹筁orem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, eligendi magni eos voluptas qui officia recusandae corporis debitis quo nostrum. Aliquid eum esse molestiae expedita minima, est placeat, voluptatum id.   
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                Copyright 漏 2015 <a class="grey-text text-lighten-4" href="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs" target="_blank">GeeksLabs</a> All rights reserved.
+                <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://geekslabs.com/">GeeksLabs</a></span>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="/admin/js/plugins/jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="/admin/js/materialize.min.js"></script>
+    <!--scrollbar-->
+
+</body>
+
 </html>
