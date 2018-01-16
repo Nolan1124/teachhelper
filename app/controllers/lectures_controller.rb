@@ -1,6 +1,6 @@
 class LecturesController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_lecture, only: [:show, :edit, :update, :destroy]
+  before_action :set_lecture, only: [:edit, :update, :destroy]
 
   def add
     
@@ -9,11 +9,6 @@ class LecturesController < ApplicationController
   # GET /lectures.json
   def index
     @lectures = Lecture.all
-  end
-
-  # GET /lectures/1
-  # GET /lectures/1.json
-  def show
   end
 
   # GET /lectures/new
@@ -25,28 +20,16 @@ class LecturesController < ApplicationController
   def edit
   end
 
-  # PATCH/PUT /lectures/1
-  # PATCH/PUT /lectures/1.json
-  def update
-    respond_to do |format|
-      if @lecture.update(lecture_params)
-        format.html { redirect_to @lecture, notice: 'Lecture was successfully updated.' }
-        format.json { render :show, status: :ok, location: @lecture }
-      else
-        format.html { render :edit }
-        format.json { render json: @lecture.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  
 
   # DELETE /lectures/1
   # DELETE /lectures/1.json
+  
   def destroy
+    @lecture=Lecture.find_by(secret_key: params[:id])
     @lecture.destroy
-    respond_to do |format|
-      format.html { redirect_to lectures_url, notice: 'Lecture was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash = { :info => "讲义#{@lecture.lecture_name}删除成功"}
+    redirect_to courses_path(:page => params[:page]), :flash => flash
   end
   
   # POST /lectures
@@ -59,29 +42,10 @@ class LecturesController < ApplicationController
 			@lecture.secret_key=createSecretKey(@lecture.course_id)
 			@lecture.save
 		end
-		redirect_to lectures_path
+		redirect_to courses_path(:page => @lecture.course_id)
   end
   
-  def findkey
-    key=session[:secret_key]
-    lectures = Lecture.find_by(secret_key: key)
-    return lectures
-  end
   
-  def download
-    @file_name=@lectures.url
-    url="#{Rails.root}/public/upload/#{@file_name}"
-    #send_file("#{Rails.root}/public/upload/#{@file_name}") unless params[:url].blank? 
-    
-    file_path = url
-    if File.exist?(file_path)
-        io = File.open(file_path)
-        io.binmode
-        send_data(io.read,:filename => @file_name,:disposition => 'attachment')
-        io.close
-    end
-    
-  end
   
   
   ##上传文件

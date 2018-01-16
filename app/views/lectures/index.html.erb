@@ -24,11 +24,7 @@
         <td><%= lecture.secret_key %></td>
         <td><%= lecture.created_at %></td>
         <td>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      lecture_path(lecture),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+          <%= link_to "删除", lectures_delete_path(:id => lecture.secret_key), method: :delete %></td>
         </td>
       </tr>
     <% end %>

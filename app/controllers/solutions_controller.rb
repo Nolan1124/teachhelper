@@ -1,4 +1,4 @@
-class SolutionsController < ApplicationController
+class SolutionsController < BaseApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_solution, only: [:show, :edit, :update, :destroy]
 

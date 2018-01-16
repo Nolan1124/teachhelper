@@ -1,0 +1,37 @@
+
+<%- model_class = Lecture -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:course_id) %></th>
+      <th><%= model_class.human_attribute_name(:lecture_name) %></th>
+      <th><%= model_class.human_attribute_name(:url) %></th>
+      <th><%= model_class.human_attribute_name(:secret_key) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr>
+        <td><%= @stulectures.id %></td>
+        <td><%= @stulectures.course_id %></td>
+        <td><%= @stulectures.lecture_name %></td>
+        <td><%= @stulectures.url %></td>
+        <td><%= @stulectures.secret_key %></td>
+        <td><%= @stulectures.created_at %></td>
+        <td>
+            
+          
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+

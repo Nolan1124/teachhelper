@@ -94,7 +94,9 @@
                             <td><%= lecture.lecture_name %></td>
                             <td><a href="<%= lecture.url %>"><%= lecture.url %></a></td>
                             <td><%= lecture.secret_key %></td>
-                            <td><%= link_to "删除", lecture, method: :delete, data: { confirm: "确定删除该讲义吗?" } %></td>
+                            <td>>
+                            <%= link_to "删除", lectures_delete_path(:id => lecture.secret_key, :page=>lecture.course_id), method: :delete, data: { confirm: "确定删除该讲义吗?" } %></td>
+                            
                         </tr>
                         <% end %>
                     </tbody>

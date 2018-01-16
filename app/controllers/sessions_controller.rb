@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionsController < BaseApplicationController
     include SessionsHelper
     def new
         
@@ -25,7 +25,8 @@ class SessionsController < ApplicationController
         elsif ifLkey(key) then
             lec=Lecture.find_by(secret_key: key)
             if lec
-                redirect_to URI.encode(lec.url)
+                session[:secret_key]=key
+                redirect_to stulectures_path
             else
                 flash[:notice] = "密钥不存在!!!"
                 redirect_to "/sessions/new"

@@ -1,0 +1,2 @@
+module StulecturesHelper
+end

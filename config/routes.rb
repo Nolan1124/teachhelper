@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :stulectures
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -52,12 +53,15 @@ Rails.application.routes.draw do
   match '/solutions/score', to: 'solutions#score', via:'get'
   
   #教师上传讲义页面
-  resources :lectures
+  resources :lectures, only:[:index, :create, :new, :add, :destroy]
   match '/lectures/add',to: 'lectures#add', via:'add'
+  #教师删除讲义
+  get 'lectures/delete' => 'lectures#destroy'
+  #match '/lectures/delete', to: 'lectures#destroy', via:'delete'
   
   #学生下载讲义
-
-  
+  resources :stu_lecture
+  match '/stu_lectures',to: 'stu_lectures#findkey', via:'get'
 #######################################GWL##################################################################################
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

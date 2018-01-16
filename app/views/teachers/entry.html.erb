@@ -103,5 +103,25 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/home/js/materialize.min.js"></script>
 </body>
-
+<table>
+    <thead>
+      <tr>
+        <th>username</th><!--new-->
+        <th>password</th><!--new-->
+        <th>email</th><!--new-->
+        <th>gmt_time</th><!--new-->
+      </tr>
+    </thead>
+    <tbody>
+      <% teach=Teacher.all %>
+      <% teach.each do |teac| %>
+        <tr>
+          <td><%= teac.username %></td> <!--new-->
+          <td><%= teac.password %></td> <!--new-->
+          <td><%= teac.email %></td> <!--new-->
+          <td><%= teac.gmt_time %></td> <!--new-->
+        </tr>
+      <% end %>
+    </tbody>
+</table>
 </html>
