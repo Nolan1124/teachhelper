@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   #删除课堂任务
   get 'assignments/delete' => 'assignments#destroy'
   
+  #查看课程任务成绩
+  get 'assignments/:assignment_id/score' => 'assignments#show_score'
+  
   #为课堂任务创建密钥
   post 'assignments/buildkey' => 'assignments#build_secret_key'
   get 'assignments/duration' => 'assignments#duration'

@@ -47,7 +47,7 @@
                       <th align="center">有效时间</th>
                       <th align="center">状态</th>
                       <th align="center">生成密钥</th>
-                      <th align="center">删除</th>
+                      <th align="center">操作</th>
                   </tr>
                 </thead>
         
@@ -66,7 +66,8 @@
                         <td>未生成</td>
                             <% end %>
                         <td><%= link_to "生成", assignments_duration_path(:number => assignment.id) %></td>
-                        <td><%= link_to "删除", assignments_delete_path(:id => assignment.id), method: :get %></td>
+                        <td><a href='/assignments/<%=assignment.id%>/score'>查看成绩</a>
+                          <%= link_to "删除", assignments_delete_path(:id => assignment.id), method: :get %></td>
                     </tr>
                     <% end %>
                 </tbody>

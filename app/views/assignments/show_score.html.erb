@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>教师主页</title>
+
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- CORE CSS-->    
+    <link href="/home/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+
+<body>
+<div class="navbar-fixed">
+
+<nav>
+  <div class="nav-wrapper light-blue">
+    <a href="/teachers/" class="brand-logo" style="margin-left: 20px;">教师主页</a>
+    <ul class="right hide-on-med-and-down">
+      <li>登录成功，欢迎您，<%=session['teacher_name']%>：）</li>
+      <li><%= link_to "退出登录", { :controller => 'teachers',:action => 'destroy' } %></li>
+    </ul>
+  </div>
+</nav>
+</div>
+<div class="container" style="box-shadow: 0 0 5px lightblue; padding: 20px;">
+    <div class="row">
+        <div class="col s12">
+       
+         <table class="striped">
+                <caption style="font-size:230%">学生成绩</caption>
+                <thead>
+                  <tr>
+                      <th align="center">学号</th>
+                      <th align="center">学生姓名</th>
+                      <th align="center">学生答案</th>
+                      <th align="center">学生分数</th>
+                     
+                  </tr>
+                </thead>
+        
+                <tbody>
+                  <% @solutions.each do |solution| %>
+                    <tr>
+                        <td><%= solution.student_id %></td>
+                        
+                        <td><%= solution.student_name %></td>
+                        <td><%= solution.student_answer %></td>
+                        <td><%= solution.score %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+              </table>
+              
+        </div>
+        
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/home/js/materialize.min.js"></script>
+
+</body>
+
+</html>

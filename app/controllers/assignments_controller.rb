@@ -8,6 +8,11 @@ class AssignmentsController < ApplicationController
     def new
     end
     
+    def show_score
+        @solutions = Solution.find_by_sql("select * from solutions where assignment_id = #{params[:assignment_id]}")
+        
+    end
+    
     #添加课堂任务
     def add_assignment
         Rails.logger.info('----------addAssignment  start.-------------')
