@@ -2,32 +2,59 @@ class CoursesController < ApplicationController
     #跳过csrf验证，方便测试
     #skip_before_action :verify_authenticity_token, :only => [:addCourse]
     
-    def new
+    #课程页面
+    def index
+        #获取该门课程的课堂任务
+        course_id = params[:page]
+        session[:course_id] = course_id
+        
+        @course_name = Course.find_by_id(course_id)
+        
+        @assignments_by_course = Assignment.find_by_sql("select * from assignments where course_id = #{course_id}")
+        
+        @lectures_by_course = Lecture.find_by_sql("select * from lectures where course_id = #{course_id}")
+        
     end
     
-    def addCourse
+    def course_detail
+        
+    end
+    
+    def new 
+    end
+    
+    #添加课程
+    def add_course
         Rails.logger.info('----------addCourse  start.-------------')
     
-        @course = Course.new(course_params)
+        @course = Course.new(:name => params[:course][:name], :teacher_id => session[:teacher_id])
         if @course.save
-            code = 0b0001
-            resp_msg = "添加课程成功"
+            #code = 0b0001
+            flash ={:info => "添加课程成功"}
         else
-            code = 0b0000
-            resp_msg = "添加课程失败"
+            #code = 0b0000
+            flash ={:error => "添加课程失败"}
         end
-        resp_json = "{\"code\":#{code}, \"message\":\"#{resp_msg}\", \"data\":{} }"
         
-        respond_to do |format|
-            format.html do 
-                redirect_to teachers_main_path
-            end
-            format.json { render json: "#{resp_json}"}
-        end
+        redirect_to teachers_path
+    end
+    
+    
+    def edit_course
+        
+    end
+    
+    #删除课程信息
+    def destroy
+        @course = Course.find(params[:id])
+        @course.destroy
+        flash = { :info => "课程#{@course.name}删除成功"}
+        
+        redirect_to teachers_path, :flash => flash
     end
     
     def course_params
-        params.require(:course).permit(:c_id, :t_id, :cname, :year, :season, :gmt_time)
+        params.require(:course).permit(:name)
     end
     
 end

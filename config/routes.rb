@@ -22,16 +22,16 @@ Rails.application.routes.draw do
   get 'teachers/logout' => 'teachers#destroy'
   
   #添加课程
-  post 'courses/addcourse' => 'courses#addCourse'
+  post 'courses/addcourse' => 'courses#add_course'
   
   #添加课堂任务
-  post 'assignments/addassignment' => 'assignments#addAssignment'
+  post 'assignments/addassignment' => 'assignments#add_assignment'
   
   #显示任务列表
   get 'assignments/showlist' => 'assignments#showlist'
   
-  #设置密钥有效期
-  post 'assignments/setDuration' => 'assignments#setDuration'
+  #为课堂任务创建密钥
+  post 'assignments/buildkey' => 'assignments#build_secret_key'
   get 'assignments/duration' => 'assignments#duration'
 
 #######################################GWL##################################################################################

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
         
     end
     def create
-        key=params[:session][:secret_key]
+        key=params[:secret_key]
         if ifAkey(key) then
             ass=Assignment.find_by(secret_key: key)
             if(ass)
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
                 #end
             else
                 flash[:notice] = "密钥不存在!!!"
-                render "new"
+                redirect_to "/sessions/new"
             end
 
         elsif ifLkey(key) then
@@ -31,12 +31,12 @@ class SessionsController < ApplicationController
                 redirect_to lecture_path(key)
             else
                 flash[:notice] = "密钥不存在!!!"
-                render "new"
+                redirect_to "/sessions/new"
             end
         
         else
             flash[:notice] = "密钥格式错误!!!"
-            render "new"
+            redirect_to "/sessions/new"
         end
     end
     

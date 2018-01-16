@@ -1,4 +1,47 @@
 <!DOCTYPE html>
+<html>
+	<head>
+		<title>教师主页</title>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+	    <p align = "right">欢迎您,<%= session[:teacher_name] %></p>
+		<h1 align = "center"> 教师主页 </h1>
+		
+		<div align="center">
+		   <% flash.each do |name, msg| -%>
+              <%= content_tag :div, msg, class: name %>
+           <% end -%>
+           <br>
+           
+           <h2>我的课程</h2>
+        <!--显示我的课程 -->
+       <% if @my_courses %>
+		  <table border = "1">
+            <tr>
+                <th>课程号</th>
+                <th>课程名</th>
+                <th>创建时间</th>
+                <th>课程详情</th>
+                <th>删除</th>
+            </tr>
+ 
+            <% @my_courses.each do |course| %>
+            <tr>
+                <td><%= course.id %></td>
+                <td><%= course.name %></td>
+                <td><%= course.created_at %></td>
+                <td><%= link_to "进入", courses_path(:page => course.id) %></td>
+                <td><%= link_to "删除", course, method: :delete, data: { confirm: "确定删除该门课程吗?" } %></td>
+            </tr>
+            <% end %>
+            </table>
+           <% else %>
+             <p>您暂时还没有添加任何课程</p>
+           <% end %>
+         
+           <p><%= link_to "添加课程", { :controller => 'courses',:action => 'new' } %></p>
+           <p><%= link_to "退出登录", { :controller => 'teachers',:action => 'destroy' } %></p>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -42,15 +85,11 @@
                 <ul id="slide-out" class="side-nav fixed leftside-navigation">
                 <li class="user-details cyan darken-2">
                 <div class="row">
-                    <div class="col col s4 m4 l4">
-                        <img src="images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
-                    </div>
-                    <div class="col col s8 m8 l8">
+                    <div class="col">
                         <ul id="profile-dropdown" class="dropdown-content">
                             <li><%= link_to "退出登录", { :controller => 'teachers',:action => 'destroy' } %></li>
                         </ul>
-                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">John Doe<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                        <p class="user-roal">教师名称</p>
+                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">欢迎 <%=session['teacher_name']%> 老师！！<i class="mdi-navigation-arrow-drop-down right"></i></a>
                     </div>
                 </div>
                 </li>
