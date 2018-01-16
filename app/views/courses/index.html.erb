@@ -66,16 +66,7 @@
                 <th>删除</th>
             </tr>
  
-            <% @lectures_by_course.each do |lecture| %>
-            <tr>
-                <td><%= lecture.course_id %></td>
-                <td><%= lecture.lecture_name %></td>
-                <td><%= lecture.url %></td>
-                <td><%= lecture.secret_key %></td>
-                <td><%= assignment.created_at %></td>
-                <td><%= link_to "删除", course, method: :delete, data: { confirm: "确定删除该讲义吗?" } %></td>
-            </tr>
-            <% end %>
+           
             </table>
         <% else %>
              <p>您暂时还没有为该课程添加任何课堂讲义</p>

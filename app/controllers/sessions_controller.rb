@@ -26,9 +26,7 @@ class SessionsController < ApplicationController
         elsif ifLkey(key) then
             lec=Lecture.find_by(secret_key: key)
             if lec
-                flash[:notice] = key
-                session[:secret_key]=key
-                redirect_to lecture_path(key)
+                redirect_to URI.encode(lec.url)
             else
                 flash[:notice] = "密钥不存在!!!"
                 redirect_to "/sessions/new"
