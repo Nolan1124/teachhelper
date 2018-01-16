@@ -1,81 +1,112 @@
+
+
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>课程详情</title>
-		<meta charset="UTF-8"/>
-	</head>
-	<body>
-	    <div align = "right"><p>课程名：<%= @course_name.name %></p></div>
-		<h1 align = "center"> 课程详情 </h1>
-		 
-		<div align="center">
-		   <% flash.each do |name, msg| -%>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>教师主页</title>
+
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- CORE CSS-->    
+    <link href="/home/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+
+<body>
+<div class="navbar-fixed">
+
+<nav>
+  <div class="nav-wrapper light-blue">
+    <a href="/teachers/" class="brand-logo" style="margin-left: 20px;">教师主页</a>
+    <ul class="right hide-on-med-and-down">
+      <li>登录成功，欢迎您，<%=session['teacher_name']%>：）</li>
+      <li><%= link_to "退出登录", { :controller => 'teachers',:action => 'destroy' } %></li>
+    </ul>
+  </div>
+</nav>
+</div>
+<div class="container" style="box-shadow: 0 0 5px lightblue; padding: 20px;">
+    <div class="row">
+        <div class="col s12">
+         <% flash.each do |name, msg| -%>
               <%= content_tag :div, msg, class: name %>
            <% end -%>
-           <br>
-           
-           <h2>课程任务</h2>
-        <!--显示该门课的课堂任务 -->
-        <% if !@assignments_by_course.empty? %>
-		  <table border = "1">
-            <tr>
-                <th>课程号</th>
-                <th>题目描述</th>
-                <th>题目答案</th>
-                <th>答题密钥</th>
-                <th>创建时间</th>
-                <th>有效时间（s）</th>
-                <th>状态</th>
-                <th>生成密钥</th>
-                <th>删除</th>
-            </tr>
- 
-            <% @assignments_by_course.each do |assignment| %>
-            <tr>
-                <td><%= assignment.course_id %></td>
-                <td><%= raw assignment.content %></td>
-                <td><%= assignment.answer %></td>
-                <td><%= assignment.secret_key %></td>
-                <td><%= assignment.gmt_time %></td>
-                <td><%= assignment.duration %></td>
-                <% if assignment.gmt_time %>
-                    <% if Time.now.to_i - Time.at(assignment.gmt_time).to_i > assignment.duration %> <td>已过期</td> <% else %><td>未过期</td> <% end %>
-                <% else %>
-                <td>未生成</td>
+         <table class="striped">
+                <caption style="font-size:230%">课程任务</caption>
+                <thead>
+                  <tr>
+                      <th align="center">课程号</th>
+                      
+                      <th align="center">题目答案</th>
+                      <th align="center">答题密钥</th>
+                      <th align="center">创建时间</th>
+                      <th align="center">有效时间</th>
+                      <th align="center">状态</th>
+                      <th align="center">生成密钥</th>
+                      <th align="center">删除</th>
+                  </tr>
+                </thead>
+        
+                <tbody>
+                  <% @assignments_by_course.each do |assignment| %>
+                    <tr>
+                        <td><%= assignment.course_id %></td>
+                        
+                        <td><%= assignment.answer %></td>
+                        <td><%= assignment.secret_key %></td>
+                        <td><%= assignment.gmt_time %></td>
+                        <td><%= assignment.duration %></td>
+                        <% if assignment.gmt_time %>
+                            <% if Time.now.to_i - Time.at(assignment.gmt_time).to_i > assignment.duration %> <td>已过期</td> <% else %><td>未过期</td> <% end %>
+                        <% else %>
+                        <td>未生成</td>
+                            <% end %>
+                        <td><%= link_to "生成", assignments_duration_path(:number => assignment.id) %></td>
+                        <td><%= link_to "删除", assignments_delete_path(:id => assignment.id), method: :get %></td>
+                    </tr>
                     <% end %>
-                <td><%= link_to "生成", assignments_duration_path(:number => assignment.id) %></td>
-                <td><%= link_to "删除", assignments_delete_path(:id => assignment.id), method: :get%></td>
-            </tr>
-            <% end %>
-          </table>
-        <% else %>
-             <p>您暂时还没有为该课程添加任何课堂任务</p>
-        <% end %>
-        <div><p>注意：答题密钥为空的为尚未生成答题密钥的课堂任务，可以点击“生成”按钮生成。</p></div>
-           
-           <h2>课程讲义</h2>
-        <!--显示该门课的课堂讲义 -->
-        <% if !@lectures_by_course.empty? %>
-		  <table border = "1">
-            <tr>
-                <th>课程号</th>
-                <th>讲义名</th>
-                <th>URL</th>
-                <th>下载密钥</th>
-                <th>创建时间</th>
-                <th>删除</th>
-            </tr>
- 
-           
-            </table>
-        <% else %>
-             <p>您暂时还没有为该课程添加任何课堂讲义</p>
-        <% end %>
-         
-           <p><%= link_to "添加课程任务", { :controller => 'assignments',:action => 'new' } %></p>
-           <p>添加讲义</p> <!--添加讲义前端入口 -->
-           <p><%= link_to "退出登录", { :controller => 'teachers',:action => 'destroy' } %></p>
+                </tbody>
+              </table>
+               <p align="center">注意：答题密钥为空的为尚未生成答题密钥的课堂任务，可以点击“生成”按钮生成。</p>
+               <p align='center'><%= link_to "添加课程任务", { :controller => 'assignments',:action => 'new' } %></p>
+            
+            <table class="striped">
+                    <caption style="font-size:230%">课程讲义</caption>
+                    <thead>
+                      <tr>
+                          <th align="center">课程号</th>
+                          <th align="center">讲义名</th>
+                          <th align="center">URL</th>
+                          <th align="center">下载密钥</th>
+                          <th align="center">删除</th>
+                      </tr>
+                    </thead>
+            
+                    <tbody>
+                       <% @lectures_by_course.each do |lecture| %>
+                        <tr>
+                            <td><%= lecture.course_id %></td>
+                            <td><%= lecture.lecture_name %></td>
+                            <td><a href=<%= lecture.url %>><%= lecture.url %></a></td>
+                            <td><%= lecture.secret_key %></td>
+                            <td><%= link_to "删除", lecture, method: :delete, data: { confirm: "确定删除该讲义吗?" } %></td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                  </table>
+                   <p align='center'><%= link_to "添加课程讲义", { :controller => 'lectures',:action => 'new' } %></p> 
+                  
         </div>
-		
-	</body>  
+        
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/home/js/materialize.min.js"></script>
+
+</body>
+
 </html>
