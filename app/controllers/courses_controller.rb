@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
     #跳过csrf验证，方便测试
-    #skip_before_action :verify_authenticity_token, :only => [:addCourse]
+    skip_before_action :verify_authenticity_token, :only => [:add_course]
     
     #课程页面
     def index
@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
     def add_course
         Rails.logger.info('----------addCourse  start.-------------')
     
-        @course = Course.new(:name => params[:course][:name], :teacher_id => session[:teacher_id])
+        @course = Course.new(:name => params[:name], :teacher_id => session[:teacher_id])
         if @course.save
             #code = 0b0001
             flash ={:info => "添加课程成功"}
