@@ -27,7 +27,7 @@
         <td><%= @stulectures.secret_key %></td>
         <td><%= @stulectures.created_at %></td>
         <td>
-            
+            <%= link_to "下载", stulectures_download_path(:url => @stulectures.url) %>
           
         </td>
       </tr>

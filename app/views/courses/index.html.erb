@@ -35,8 +35,11 @@
          <% flash.each do |name, msg| -%>
               <%= content_tag :div, msg, class: name %>
            <% end -%>
+         
+         
+         <% if !@assignments_by_course.empty? %>   
          <table class="striped">
-                <caption style="font-size:230%">课程任务</caption>
+             <caption style="font-size:230%">课程任务</caption>
                 <thead>
                   <tr>
                       <th align="center">课程号</th>
@@ -72,9 +75,16 @@
                     <% end %>
                 </tbody>
               </table>
+              
+              <% else %>
+                <p align="center", style="font-size:35px;">尚不存在课程任务</p>
+            <% end %>
                <p align="center">注意：答题密钥为空的为尚未生成答题密钥的课堂任务，可以点击“生成”按钮生成。</p>
-               <p align='center'><%= link_to "添加课程任务", { :controller => 'assignments',:action => 'new' } %></p>
+               <p align='center'><%= link_to "添加课程任务", { :controller => 'assignments',:action => 'new' } %></p></br>
             
+           
+           
+           <% if !@lectures_by_course.empty? %>
             <table class="striped">
                     <caption style="font-size:230%">课程讲义</caption>
                     <thead>
@@ -101,7 +111,11 @@
                         <% end %>
                     </tbody>
                   </table>
-                   <p align='center'><%= link_to "添加课程讲义", { :controller => 'lectures',:action => 'new' } %></p> 
+                
+                <% else %>
+                <p align="center", style="font-size:35px;">尚不存在课程讲义</p>
+                <% end %>
+                <p align='center'><%= link_to "添加课程讲义", { :controller => 'lectures',:action => 'new' } %></p> 
                   
         </div>
         

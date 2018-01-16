@@ -11,19 +11,11 @@ class StulecturesController < BaseApplicationController
   end
   
   def download
-    @file_name=@lectures.url
-    url="#{Rails.root}/public/upload/#{@file_name}"
-    #send_file("#{Rails.root}/public/upload/#{@file_name}") unless params[:url].blank? 
-    
-    file_path = url
-    if File.exist?(file_path)
-        io = File.open(file_path)
-        io.binmode
-        send_data(io.read,:filename => @file_name,:disposition => 'attachment')
-        io.close
-    end
-    
+    file_name=params[:url]
+    file_path = File.join(Rails.root, "public")
+    send_file(File.join(file_path, file_name))
   end
+  
   def index
     key=session[:secret_key]
     @stulectures = Lecture.find_by(secret_key: key)
