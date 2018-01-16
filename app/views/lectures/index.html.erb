@@ -20,7 +20,7 @@
         <td><%= link_to lecture.id, lecture_path(lecture) %></td>
         <td><%= lecture.course_id %></td>
         <td><%= lecture.lecture_name %></td>
-        <td><%= lecture.url %></td>
+        <td><a href='<%= lecture.url %>' ><%=lecture.url%></a></td>
         <td><%= lecture.secret_key %></td>
         <td><%= lecture.created_at %></td>
         <td>

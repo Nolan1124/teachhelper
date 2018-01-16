@@ -1,4 +1,5 @@
 class LecturesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_lecture, only: [:show, :edit, :update, :destroy]
 
   def add
@@ -54,8 +55,7 @@ class LecturesController < ApplicationController
     @lecture=Lecture.new(lecture_params)
     unless request.get?
 			file_name = uploadfile(lecture_params[:url])			
-			
-			@lecture.url= file_name
+			@lecture.url= "/upload/#{file_name}"
 			@lecture.secret_key=createSecretKey(@lecture.course_id)
 			@lecture.save
 		end
@@ -118,7 +118,7 @@ class LecturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lecture_params
-      params.require(:lecture).permit(:course_id, :lecture_name, :url)
+      params.permit(:course_id, :lecture_name, :url)
       #params.fetch(:lecture, {})
     end
 end

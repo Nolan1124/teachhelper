@@ -1,5 +1,69 @@
-<%- model_class = Lecture -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>教师主页</title>
+
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- CORE CSS-->    
+    <link href="/home/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+
+<body>
+<div class="navbar-fixed">
+
+<nav>
+  <div class="nav-wrapper light-blue">
+    <a href="/teachers/" class="brand-logo" style="margin-left: 20px;">教师主页</a>
+    <ul class="right hide-on-med-and-down">
+      <li>登录成功，欢迎您，<%=session['teacher_name']%>：）</li>
+      <li><%= link_to "退出登录", { :controller => 'teachers',:action => 'destroy' } %></li>
+    </ul>
+  </div>
+</nav>
 </div>
-<%= render :partial => 'form' %>
+<div class="container" style="box-shadow: 0 0 5px lightblue; padding: 20px;">
+    <div class="row">
+        <div class="col s12">
+            <h5>添加课件</h5>
+             <form class="col s12" enctype="multipart/form-data" action="/lectures" accept-charset="UTF-8" method="post">
+               <input type='hidden' value=<%=session[:course_id]%> name='course_id'>
+              <div class="row">
+                <div class="input-field">
+                  <input id="icon_prefix"  type="text" name='lecture_name'>
+                  <label for="icon_prefix">课件名称</label>
+                </div>
+                <div class="file-field input-field">
+                  <div class=" btn waves-light light-bluee">
+                    <span>上传文件</span>
+                    <input type="file" name='url'>
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+                </div>
+                <div class="input-field col s6">
+                   <button class="btn waves-effect waves-light light-blue" type="submit" name="action">提交
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </div>
+            </form>
+        
+        </div>
+        
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/home/js/materialize.min.js"></script>
+
+</body>
+
+</html>
