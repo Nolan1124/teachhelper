@@ -40,15 +40,15 @@ class SolutionsController < ApplicationController
       @solution.score=comp_string(real_answer,answer)
       #session[:secret_key] = nil
       if @solution.save
-        flash[:warning] = @solution.score.to_s
-        redirect_to :action => "score", :value => @solution.score
+        flash[:notice] = "提交成功，本次课堂成绩得到 #{@solution.score.to_s} 分！！"
+        redirect_to "/sessions/new"
       else
-        flash[:warning] ="save error"
-        render "new"
+        flash[:notice] ="提交保存出现错误，请联系老师说明原因！！"
+        redirect_to "/sessions/new"
       end
     else
-      flash[:warning] = "find error"
-      render "new"
+      flash[:notice] = "没有找到课堂任务！！"
+      redirect_to "/sessions/new"
     end
   end
   
