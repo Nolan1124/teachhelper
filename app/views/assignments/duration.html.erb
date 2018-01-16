@@ -1,21 +1,59 @@
+
+
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Main</title>
-		<meta charset="UTF-8"/>
-	</head>
-	<body>
-		<h1 align = "center"> 设置密钥有效期 </h1>
-		<div align="center">
-    	    <%= form_for :assignment, :method => 'post', :url => {:action => 'build_secret_key'} do |f| %>
-                <p>密钥有效期：<%= f.text_field :duration %></p>
-  	            <p><%= submit_tag "生成" %></p>
-	         <% end %>
-	         
-	         <% flash.each do |name, msg| -%>
-                <%= content_tag :div, msg, class: name %>
-             <% end -%>
-		</div>
-		
-	</body>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>教师主页</title>
+
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- CORE CSS-->    
+    <link href="/home/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+
+<body>
+<div class="navbar-fixed">
+
+<nav>
+  <div class="nav-wrapper light-blue">
+    <a href="/teachers/" class="brand-logo" style="margin-left: 20px;">教师主页</a>
+    <ul class="right hide-on-med-and-down">
+      <li>登录成功，欢迎您，<%=session['teacher_name']%>：）</li>
+      <li><%= link_to "退出登录", { :controller => 'teachers',:action => 'destroy' } %></li>
+    </ul>
+  </div>
+</nav>
+</div>
+<div class="container" style="box-shadow: 0 0 5px lightblue; padding: 20px;">
+    <div class="row">
+        <div class="col s12">
+        	 <% flash.each do |name, msg| -%>
+              <%= content_tag :div, msg, class: name %>
+           <% end -%>
+            
+             
+                    <h5 class='center-align'>设置密钥有效期</h5><br>
+                    <%= form_for :assignment, :method => 'post', :url => {:action => 'build_secret_key'} do |f| %>
+                        <div class="row center">
+                          <div class="input-field col s8">
+                            <input id="icon_prefix light-blue" type="number" name='assignment[duration]' >
+                            <label for="icon_prefix">密钥有效期</label>
+                          </div>
+                          <br><button class="btn waves-effect light-blue" type="submit" name="action">生成</button>
+                        </div>
+                    <% end %>
+        
+        </div>
+        
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/home/js/materialize.min.js"></script>
+</body>
+
 </html>
