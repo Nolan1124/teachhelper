@@ -9,15 +9,14 @@ class SessionsController < ApplicationController
             ass=Assignment.find_by(secret_key: key)
             if(ass)
                 #判断密钥是否在生存期内
-                #time_now=Time.now.strftime('%Y%m%d%H%M%S')
-                #if time_now-ass.gmt_time < ass.duration then
+                if Time.now.to_i - Time.at(ass.gmt_time).to_i < ass.duration then
                     flash[:notice] = key
                     session[:secret_key]=key
                     redirect_to "/solutions/new"
-                #else
-                #    flash[:notice] = "密钥超时!!!"
-                #    render "new"
-                #end
+                else
+                    flash[:notice] = "密钥超时!!!"
+                    redirect_to "/sessions/new"
+                end
             else
                 flash[:notice] = "密钥不存在!!!"
                 redirect_to "/sessions/new"
