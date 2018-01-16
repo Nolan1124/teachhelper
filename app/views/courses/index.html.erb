@@ -44,7 +44,7 @@
                 <td>未生成</td>
                     <% end %>
                 <td><%= link_to "生成", assignments_duration_path(:number => assignment.id) %></td>
-                <td><%= link_to "删除", assignment, method: :delete, data: { confirm: "确定删除该课堂任务吗?" } %></td>
+                <td><%= link_to "删除", assignments_delete_path(:id => assignment.id), method: :get%></td>
             </tr>
             <% end %>
           </table>

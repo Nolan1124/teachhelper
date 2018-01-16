@@ -54,7 +54,7 @@
                             <td><%= course.name %></td>
                             <td><%= course.created_at %></td>
                             <td><%= link_to "进入", courses_path(:page => course.id) %></td>
-                            <td><%= link_to "删除", course, method: :delete, data: { confirm: "确定删除该门课程吗?" } %></td>
+                            <td><%= link_to "删除", courses_delete_path(:id => course.id), method: :get %></td>
                         </tr>
                     <% end %>
                     </tbody>

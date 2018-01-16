@@ -24,11 +24,14 @@ Rails.application.routes.draw do
   #添加课程
   post 'courses/addcourse' => 'courses#add_course'
   
+  #删除课程
+  get 'courses/delete' => 'courses#destroy'
+  
   #添加课堂任务
   post 'assignments/addassignment' => 'assignments#add_assignment'
   
-  #显示任务列表
-  get 'assignments/showlist' => 'assignments#showlist'
+  #删除课堂任务
+  get 'assignments/delete' => 'assignments#destroy'
   
   #为课堂任务创建密钥
   post 'assignments/buildkey' => 'assignments#build_secret_key'
