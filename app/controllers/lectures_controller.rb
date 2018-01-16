@@ -15,15 +15,6 @@ class LecturesController < ApplicationController
   def new
     @lecture = Lecture.new
   end
-
-  # GET /lectures/1/edit
-  def edit
-  end
-
-  
-
-  # DELETE /lectures/1
-  # DELETE /lectures/1.json
   
   def destroy
     @lecture=Lecture.find_by(secret_key: params[:id])

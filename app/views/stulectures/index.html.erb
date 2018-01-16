@@ -1,37 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="msapplication-tap-highlight" content="no">
+    <title>课件下载</title>
+<link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CORE CSS-->    
+<link href="/home/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
 
-<%- model_class = Lecture -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:course_id) %></th>
-      <th><%= model_class.human_attribute_name(:lecture_name) %></th>
-      <th><%= model_class.human_attribute_name(:url) %></th>
-      <th><%= model_class.human_attribute_name(:secret_key) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <tr>
-        <td><%= @stulectures.id %></td>
-        <td><%= @stulectures.course_id %></td>
-        <td><%= @stulectures.lecture_name %></td>
-        <td><%= @stulectures.url %></td>
-        <td><%= @stulectures.secret_key %></td>
-        <td><%= @stulectures.created_at %></td>
+<body>
+<div class="container" style="box-shadow: 0 0 5px lightblue; padding: 20px; top: 100px">
+<div class="row">
+<div class="col s12">
+  
+<table class="striped">
+<caption style="font-size:230%">课程讲义</caption>
+                    <thead>
+                      <tr>
+<th align="center">课程号</th>
+<th align="center">讲义名</th>
+<th align="center">URL</th>
+<th align="center">下载密钥</th>
+<th align="center">下载</th>
+                      </tr>
+                    </thead>
+            
+                    <tbody>
+                        <tr>
+<td><%= @stulectures.course_id %></td>
+<td><%= @stulectures.lecture_name %></td>
+<td><%= @stulectures.url %></td>
+<td><%= @stulectures.secret_key %></td>
         <td>
-            <%= link_to "下载", stulectures_download_path(:url => @stulectures.url) %>
+<%= link_to "下载", stulectures_download_path(:url => @stulectures.url) %>
           
         </td>
       </tr>
-    
-  </tbody>
-</table>
-
+                    </tbody>
+                  </table>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/home/js/materialize.min.js"></script>
+</body>
+</html>
