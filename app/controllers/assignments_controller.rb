@@ -2,8 +2,8 @@
 require "securerandom"
 
 class AssignmentsController < ApplicationController
-    #skip_before_action :verify_authenticity_token, :only => [:addAssignment]
-    before_action :verify_authenticity_token, :only => [:add_assignment, :showlist, :setDuration, :duration]
+    skip_before_action :verify_authenticity_token, :only => [:add_assignment]
+    #before_action :verify_authenticity_token, :only => [:add_assignment, :showlist, :setDuration, :duration]
     
     def new
     end
@@ -74,7 +74,7 @@ class AssignmentsController < ApplicationController
     
 private
     def assignment_params
-        a_params = params.require(:assignment).permit(:course_id, :content, :answer, :secret_key, :duration, :gmt_time)
+        a_params = params.permit(:course_id, :content, :answer, :secret_key, :duration, :gmt_time)
         return a_params
         #if a_params[:secret_key] = createSecretKey
         #    return a_params

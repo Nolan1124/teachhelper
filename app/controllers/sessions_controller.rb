@@ -42,7 +42,7 @@ class SessionsController < ApplicationController
     
     def destroy
       session[:secret_key] = nil
-      redirect_to root_path
+      redirect_to '/sessions/input_key'
     end
     def findALLkey
         ass=Assignment.find_by_sql("select * from assignments")

@@ -33,7 +33,7 @@
             <% @assignments_by_course.each do |assignment| %>
             <tr>
                 <td><%= assignment.course_id %></td>
-                <td><%= assignment.content %></td>
+                <td><%= raw assignment.content %></td>
                 <td><%= assignment.answer %></td>
                 <td><%= assignment.secret_key %></td>
                 <td><%= assignment.gmt_time %></td>

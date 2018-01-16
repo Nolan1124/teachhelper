@@ -1,4 +1,5 @@
 class SolutionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_solution, only: [:show, :edit, :update, :destroy]
 
   # GET /solutions
@@ -37,6 +38,7 @@ class SolutionsController < ApplicationController
       answer=@solution.student_answer.upcase
       #对比得到成绩
       @solution.score=comp_string(real_answer,answer)
+      #session[:secret_key] = nil
       if @solution.save
         flash[:warning] = @solution.score.to_s
         redirect_to :action => "score", :value => @solution.score
@@ -104,7 +106,7 @@ class SolutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def solution_params
-      params.require(:solution).permit(:assignment_id, :student_answer, :student_id, :student_name, :score)
+      params.permit(:assignment_id, :student_answer, :student_id, :student_name, :score)
       #params.fetch(:solution, {})
     end
 end
