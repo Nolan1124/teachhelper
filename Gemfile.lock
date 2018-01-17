@@ -100,6 +100,7 @@ GEM
     multi_json (1.12.1)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    pg (0.20.0)
     public_suffix (3.0.1)
     rack (1.6.8)
     rack-test (0.6.3)
@@ -217,6 +218,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   less-rails
+  pg (= 0.20.0)
   rails (= 4.2.5)
   responders
   rspec-rails
