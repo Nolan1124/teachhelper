@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="msapplication-tap-highlight" content="no">
-    <title>课件下载</title>
-<link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <title>课件下载|TA 教学助手</title>
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CORE CSS-->    
 <link href="/home/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link rel="icon" type="image/png" href="/home/image/ta.ico">
 </head>
 
 <body>
@@ -21,7 +22,7 @@
 <caption style="font-size:230%">课程讲义</caption>
                     <thead>
                       <tr>
-<th align="center">课程号</th>
+
 <th align="center">讲义名</th>
 <th align="center">URL</th>
 <th align="center">下载密钥</th>
@@ -31,9 +32,8 @@
             
                     <tbody>
                         <tr>
-<td><%= @stulectures.course_id %></td>
 <td><%= @stulectures.lecture_name %></td>
-<td><%= @stulectures.url %></td>
+<td><a href="<%= @stulectures.url %>"><%= @stulectures.url %></a></td>
 <td><%= @stulectures.secret_key %></td>
         <td>
 <%= link_to "下载", stulectures_download_path(:url => @stulectures.url) %>
