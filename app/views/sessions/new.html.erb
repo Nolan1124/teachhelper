@@ -66,54 +66,6 @@
   <script type="text/javascript" src="/home/js/materialize.min.js"></script>
 </body>
 
-<table>
-    <thead>
-      <tr>
-        <th>course_id</th><!--new-->
-        <th>content</th><!--new-->
-        <th>answer</th><!--new-->
-        <th>secret_key</th><!--new-->
-        <th>duration</th><!--new-->
-        <th>gmt_time</th><!--new-->
-      </tr>
-    </thead>
-    <tbody>
-      <% assi=Assignment.find_by_sql("select * from assignments") %>
-      <% assi.each do |ass| %>
-        <tr>
-          <td><%= ass.course_id %></td><!--new-->
-          <td><%= ass.content %></td><!--new-->
-          <td><%= ass.answer %></td> <!--new-->
-          <td><%= ass.secret_key %></td> <!--new-->
-          <td><%= ass.duration %></td> <!--new-->
-          <td><%= ass.gmt_time %></td> <!--new-->
-        </tr>
-      <% end %>
-    </tbody>
-</table>
-<table>
-    <thead>
-      <tr>
-        <th>id</th><!--new-->
-        <th>course_id</th><!--new-->
-        <th>lecture_name</th><!--new-->
-        <th>url</th><!--new-->
-        <th>secret_key</th><!--new-->
-      </tr>
-    </thead>
-    <tbody>
-      <% lect=Lecture.all %>
-      <% lect.each do |lec| %>
-        <tr>
-          <td><%= lec.id %></td><!--new-->
-          <td><%= lec.course_id %></td> <!--new-->
-          <td><%= lec.lecture_name %></td> <!--new-->
-          <td><%= lec.url %></td> <!--new-->
-          <td><%= lec.secret_key %></td> <!--new-->
-        </tr>
-      <% end %>
-    </tbody>
-</table>
 
 </html>
 
